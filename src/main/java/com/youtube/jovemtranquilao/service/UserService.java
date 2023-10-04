@@ -4,7 +4,6 @@ import com.youtube.jovemtranquilao.entity.User;
 import com.youtube.jovemtranquilao.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -23,8 +22,8 @@ import java.util.Collections;
 public class UserService {
 
     private  ReactiveMongoTemplate reactiveMongoTemplate;
-    @Autowired
-    private  UserRepository userRepository;
+
+    private final UserRepository userRepository;
 
     public Mono<User> createUser(User user){
         return userRepository.save(user);
